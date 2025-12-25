@@ -1,45 +1,56 @@
-# Motion + Closed-Loop Control (Rotary + Linear)
+# Portable SPECT: Image-Driven Geometry Feasibility Studies
 
-This repository provides two complementary Python modules for precision stage control in laboratory and medical imaging systems.
+This repository collects research and engineering efforts toward
+image-driven geometry inference and adaptive acquisition
+for compact and portable SPECT systems.
 
-- **Motion Control** (`src/motion_control/velmex_control.py`):  
-  Core driver for a Velmex VXM-based system controlling a rotary stage (B48Stage72) and a linear axis (MA60).
-
-- **Closed-Loop Trim Controller** (`src/closed_loop/detector_closed_loop.py`):  
-  Detector-agnostic feedback module that corrects both **angle** and **radius** through real-time sensing until within tolerance.
-
----
-
-## 🧩 Features
-- Modular design suitable for **high-precision control stages**
-- Flexible combinations of **linear, rotational, or hybrid axes**
-- Detector interface is fully **open and replaceable**:
-  - Hardware sensors (encoders, laser probes, etc.)
-  - **Image-based feedback** — use processed imaging data to infer detector displacement  
-    by matching feature points between frames, eliminating hardware sensors while improving precision
-- Proportional correction with bounded trim steps and dropout handling
-- Angle wrap-around correction in (-180°, 180°]
+The goal is to explore whether raw SPECT projection data
+contains recoverable geometric information that can be used
+to reduce dependence on high-precision mechanical hardware.
 
 ---
 
-## 🧠 Applications
-Originally developed for **adaptive medical imaging**, the framework generalizes to any  
-experiment requiring sub-millimeter accuracy and adaptive correction.
+## What this repository contains
 
-It can be directly extended with image-processing and geometric-inference modules  
-to reconstruct motion from visual data — merging control theory and computer vision.
+This repository currently includes:
 
----
+- Sensor-based motion control and closed-loop correction modules
+  (rotary and linear stages, error logging, and recovery mechanisms)
+- Image-based feasibility demos testing geometric observability
+  from SPECT raw projection data
+- Documentation of planned research directions and system extensions
 
-## 🤝 Contribution
-Contributions are welcome, especially in:
-- Image-based detector feedback  
-- Predictive error compensation  
-- Lightweight AI-assisted motion inference  
-
-Fork this repo and help us advance precision imaging control.
+The code is organized to separate baseline control infrastructure
+from physics- and image-driven feasibility studies.
 
 ---
 
-## ⚙️ License
-MIT License.
+## Current focus
+
+The current technical focus is on **angle observability from raw SPECT projections**:
+
+- Using official Jaszczak phantom activity distributions
+- Simulating side-view SPECT projections via 3D rotation and line integrals
+- Injecting small angular perturbations and realistic Poisson counting noise
+- Evaluating whether projection data retains enough information
+  to estimate local angular deviations through image analysis
+
+This work serves as an early-stage feasibility study rather than
+a finalized calibration or reconstruction algorithm.
+
+---
+
+## Demos
+
+- **SPECT Angle Observability (Jaszczak Phantom)**  
+  A reproducible demo showing that side-view SPECT raw projections
+  retain recoverable angle-dependent information under Poisson noise.  
+  See `demos/spect_angle_observability/`.
+
+---
+
+## Status
+
+This repository reflects an ongoing research effort.
+Completed components, active experiments, and planned extensions
+are documented incrementally as the project evolves.
