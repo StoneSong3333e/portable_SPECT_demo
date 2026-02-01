@@ -17,16 +17,17 @@ tomographic reconstruction or geometric calibration pipeline.
 ---
 
 ## Repository Structure
-stimulation_geant4/
+
+```text
+simulation_geant4/
 ├── CMakeLists.txt
 ├── include/          # Geant4 C++ headers (geometry, source, detector, actions)
 ├── src/              # Geant4 C++ implementation
-├── analysis/          # Python analysis: template matching, ROI, interpolation
+├── analysis/         # Python analysis: template matching, ROI, interpolation
 └── data/
-    ├── template/      # Template library (dense 2D count maps at known angles)
-    ├── observations/  # Observation maps (unknown angles + noise)
-    └── results/       # Similarity maps, ROI debug plots, error curves
-
+    ├── template/     # Template library (dense 2D count maps at known angles)
+    ├── observations/ # Observation maps (unknown angles + noise)
+    └── results/      # Similarity maps, ROI debug plots, error curves
 ---
 
 ## Simulation Model
