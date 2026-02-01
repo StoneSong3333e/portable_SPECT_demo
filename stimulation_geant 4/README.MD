@@ -28,6 +28,7 @@ simulation_geant4/
     ├── template/     # Template library (dense 2D count maps at known angles)
     ├── observations/ # Observation maps (unknown angles + noise)
     └── results/      # Similarity maps, ROI debug plots, error curves
+```
 ---
 
 ## Simulation Model
